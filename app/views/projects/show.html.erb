@@ -1,0 +1,32 @@
+<p>
+  <strong>Name:</strong>
+  <%= @project.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @project.description %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @locations.find(@project.location).name %>
+</p>
+
+<p>
+  <strong>Progress:</strong>
+  <%= @project.progress %>%
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @project.status %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @project.image.url(:medium) %>
+</p>
+
+<p><%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %></p>
