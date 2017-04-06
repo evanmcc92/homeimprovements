@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20170404201603) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "locations", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -30,7 +33,8 @@ ActiveRecord::Schema.define(version: 20170404201603) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "location_id"
-    t.index ["location_id"], name: "index_projects_on_location_id"
+    t.index ["location_id"], name: "index_projects_on_location_id", using: :btree
   end
 
+  add_foreign_key "projects", "locations"
 end
